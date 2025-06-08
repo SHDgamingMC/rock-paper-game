@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rock Paper Scissors</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <h1>Rock Paper Scissors</h1>
+
+  <div class="choices">
+    <div class="choice" onclick="play('rock')">🪨 Rock</div>
+    <div class="choice" onclick="play('paper')">📄 Paper</div>
+    <div class="choice" onclick="play('scissors')">✂️ Scissors</div>
+  </div>
+
+  <div id="result">Choose your move!</div>
+
+  <footer>© 2025 Rock Paper Scissors Game by suvin</footer>
+
+  <script>
+    function play(playerChoice) {
+      const choices = ['rock', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      let result = '';
+      if (playerChoice === computerChoice) {
+        result = "It's a draw!";
+      } else if (
+        (playerChoice === 'rock' && computerChoice === 'scissors') ||
+        (playerChoice === 'scissors' && computerChoice === 'paper') ||
+        (playerChoice === 'paper' && computerChoice === 'rock')
+      ) {
+        result = `You Win! ${playerChoice} beats ${computerChoice}`;
+      } else {
+        result = `You Lose! ${computerChoice} beats ${playerChoice}`;
+      }
+
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+
+</body>
+</html>
